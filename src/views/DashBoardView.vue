@@ -47,7 +47,8 @@
         <div class="recent-activities">
           <h2>Recent Activities</h2>
           <ul>
-            <li v-for="(activity, index) in recentActivities" :key="index">
+            <p v-if="recentActivities.length === 0">No recent activities yet.</p>
+            <li v-else v-for="(activity, index) in recentActivities" :key="index">
               <div class="activity-tenant">{{ activity.tenant }}</div>
               <div class="activity-action">{{ activity.action }}</div>
               <div :class="{'activity-status': true, 'success': activity.status === 'Payment notification', 'late': activity.status === 'Late payment'}">
@@ -72,10 +73,11 @@ export default {
   name: 'DashboardView',
   data() {
     return {
-      totalProp: 1,
-      tenants: 20,
+      totalProp: 0,
+      tenants: 0,
       rentAmount: 0,
-      recentActivities: [
+      recentActivities: [],
+      recentActivities1: [
         { tenant: 'Kamau G.K', action: 'Payment notification', status: 'Payment notification' },
         { tenant: 'Alice Makau', action: 'Payment notification', status: 'Payment notification' },
         { tenant: 'Tyler Susan', action: 'Payment notification', status: 'Payment notification' },
@@ -83,6 +85,20 @@ export default {
       ],
     };
   },
+  methods: {
+    // Method to update the totals and recent activities
+    updateDashboard(properties, tenants, rent, activities) {
+      this.totalProperties = properties;
+      this.totalTenants = tenants;
+      this.totalRent = rent;
+      this.recentActivities = activities;
+    }
+  },
+  created() {
+    // Simulate fetching data from an API or other source
+    // This is where you would make your API call to get the initial data
+    this.updateDashboard(0, 0, 0, []);
+  }
 };
 </script>
 

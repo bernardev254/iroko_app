@@ -29,7 +29,7 @@ export default {
   name: 'IssuesResponseView',
   data() {
     return {
-      issuesResolved: 11,
+      issuesResolved: 0,
       issuesFailed: 0,
     };
   },

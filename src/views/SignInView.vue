@@ -11,7 +11,7 @@
         <input type="password" v-model="password" id="password" required />
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-      <router-link to="/signup" class="create-account">Don't have an account? Create an Account</router-link>
+      <router-link to="/sign-up" class="create-account">Don't have an account? Create an Account</router-link>
     </form>
   </div>
 </template>
